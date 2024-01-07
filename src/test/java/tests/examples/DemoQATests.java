@@ -1,4 +1,4 @@
-package examples;
+package tests.examples;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
@@ -15,7 +15,8 @@ public class DemoQATests {
     static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
-        Configuration.holdBrowserOpen=true;
+        Configuration.pageLoadStrategy = "eager";
+//        Configuration.holdBrowserOpen=true;
 
     }
 
@@ -39,7 +40,7 @@ public class DemoQATests {
         $(".react-datepicker__month-select").selectOption("January");
         $(".react-datepicker__year-select").selectOption("2003");
         $(".react-datepicker__day--008").click();
-        $("#subjectsInput").setValue("Math").pressEnter();
+        $("#subjectsInput").setValue("Maths").pressEnter();
         $("#currentAddress").setValue("Nezavisimosti 130");
         $("#hobbies-checkbox-3").parent().click();
 //        $("#uploadPicture").uploadFile(new File("src/test/resources/img/1.png"));
@@ -53,7 +54,11 @@ public class DemoQATests {
         $(".modal-dialog").should(appear); // должен появиться
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").shouldHave(text("Komisarchuk"),text(userName),
-                text("komisarchukmarina.003@gmail.com"),text("5432345674"));
+                text("komisarchukmarina.003@gmail.com"),text("5432345674"),
+                text("Female"),text("08 January,2003"),
+                text("Maths"),text("Nezavisimosti 130"),
+                text("Music"),text("1.png"),
+                text("Haryana"),text("Karnal"));
 
     }
 
